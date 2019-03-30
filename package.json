@@ -1,0 +1,22 @@
+{
+  "name": "api-restful-favoritos",
+  "version": "1.0.0",
+  "description": "Proyecto de Api RestFul en NodeJS y Angular por @vcaruncho",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cholinyo/api-restful-favoritos.git"
+  },
+  "author": "Vicente Caruncho Ramos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cholinyo/api-restful-favoritos/issues"
+  },
+  "homepage": "https://github.com/cholinyo/api-restful-favoritos#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
