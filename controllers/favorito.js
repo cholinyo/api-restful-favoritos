@@ -17,11 +17,6 @@ function getFavorito (req , res) {
     res.status(200).send({data: favoritoId});
 
 }
-function getFavoritos (req , res) {
-    var params = req.body;
-    res.status(200).send({favorito: params});
-
-}
 function saveFavorito (req , res) {
     var params = req.body;
     res.status(200).send({favorito: params});
@@ -36,5 +31,11 @@ function deleteFavorito (req , res) {
 
 }
 
-module.exports = {prueba, getFavorito,getFavoritos,saveFavorito,updateFavorito,deleteFavorito
+module.exports = {
+    prueba,
+    getFavorito,
+    getFavoritos,
+    saveFavorito,
+    updateFavorito,
+    deleteFavorito,
 };
