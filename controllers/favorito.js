@@ -12,19 +12,22 @@ function prueba (req, res){ /*Parametro condicional*/
 };
 
 function getFavorito (req , res) {
-    var favoritoId = reg.params.id;
-
+    var favoritoId = req.params.id;
     res.status(200).send({data: favoritoId});
 
 }
+
 function saveFavorito (req , res) {
     var params = req.body;
     res.status(200).send({favorito: params});
 }
+
 function updateFavorito (req , res) {
     var favoritoId = reg.params.id;
     res.status(200).send({data: favoritoId});
+
 }
+
 function deleteFavorito (req , res) {
     var favoritoId = reg.params.id;
     res.status(200).send({data: favoritoId});
@@ -34,7 +37,6 @@ function deleteFavorito (req , res) {
 module.exports = {
     prueba,
     getFavorito,
-    getFavoritos,
     saveFavorito,
     updateFavorito,
     deleteFavorito,
