@@ -1,4 +1,7 @@
 'use strict'
+
+var favorito = require('../models/favorito');
+
 function prueba (req, res){ /*Parametro condicional*/
     if(req.params.nombre){
         var nombre = req.params.nombre;
@@ -18,7 +21,23 @@ function getFavorito (req , res) {
 }
 
 function saveFavorito (req , res) {
+
+    var favorito = new favorito();
     var params = req.body;
+    favorito.title = param.title;
+    favorito.description = param.description;
+    favorito.url = param.url;
+
+    // Guardamos en la bbdd
+
+    favorito.save((err, favoritoStored )=> {
+        if(err) {
+            res.status(500).send({message: "Error al guardar en bbdd"}); //Error en el servidor
+        }
+        
+            res.status(200).send({favorito: favoritoStored}); // Accion correcta
+    })
+
     res.status(200).send({favorito: params});
 }
 
