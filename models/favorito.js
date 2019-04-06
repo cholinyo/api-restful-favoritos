@@ -1,13 +1,15 @@
 'use strict'
 
 var mongoose = require ('mongoose');
-var schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-var favoritoSchema = schema({
+var FavoritoSchema = Schema({
     tittle : String,
     description : String,
     url : String,
 })
 
-module.exports = mongoose.model('favorito', favoritoSchema);
+module.exports = mongoose.model('Favorito',FavoritoSchema);
+
+//module.exports = mongoose.model('Favorito', FavoritoSchema);
 

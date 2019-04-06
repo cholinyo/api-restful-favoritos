@@ -1,6 +1,6 @@
 'use strict'
 
-var favorito = require('../models/favorito');
+var Favorito = require('../models/favorito');
 
 function prueba (req, res){ /*Parametro condicional*/
     if(req.params.nombre){
@@ -22,11 +22,11 @@ function getFavorito (req , res) {
 
 function saveFavorito (req , res) {
 
-    var favorito = new favorito();
+    var favorito =new Favorito();
     var params = req.body;
-    favorito.title = param.title;
-    favorito.description = param.description;
-    favorito.url = param.url;
+    favorito.title = params.title;
+    favorito.description = params.description;
+    favorito.url = params.url;
 
     // Guardamos en la bbdd
 
@@ -42,13 +42,13 @@ function saveFavorito (req , res) {
 }
 
 function updateFavorito (req , res) {
-    var favoritoId = reg.params.id;
+    var favoritoId = req.params.id;
     res.status(200).send({data: favoritoId});
 
 }
 
 function deleteFavorito (req , res) {
-    var favoritoId = reg.params.id;
+    var favoritoId = req.params.id;
     res.status(200).send({data: favoritoId});
 
 }
