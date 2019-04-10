@@ -14,10 +14,30 @@ function prueba (req, res){ /*Parametro condicional*/
         data: [2,3,4]})
 };
 
+function getFavoritos (req , res) {
+    
+    Favorito.find({}).sort('-description').exec((err,favoritos)=> {
+        if (err) {
+            res.status(500).send({message: "Error al devolver marcadores"}); //Error en el servidor
+        }
+        if (!favoritos){
+            res.status(400).send({message: "No hay favoritos"}); //Error en el servidor
+        }
+        res.status(200).send({data: favoritos});
+        })
+    }
 function getFavorito (req , res) {
     var favoritoId = req.params.id;
-    res.status(200).send({data: favoritoId});
+    Favorito.findById(favoritoId, function(err, favorito){
+        if (err) {
+            res.status(500).send({message: 'Error al devolver el favorito'});
+        }
+        if (!favorito) {
+            res.status(400).send({message: "No hay favorito"}); //Error en el servidor
+        }
 
+        res.status(200).send({data: favorito});
+    });
 }
 
 function saveFavorito (req , res) {
@@ -43,19 +63,30 @@ function saveFavorito (req , res) {
 
 function updateFavorito (req , res) {
     var favoritoId = req.params.id;
-    res.status(200).send({data: favoritoId});
+    var update = req.body;
+
+    Favorito.findOneAndUpdate(favoritoId,update,(err,favoritoUpdated)=>{
+        if (err) {
+            res.status(500).send({message: "Error al actualizar en bbdd"}); //Error en el servidor
+        }
+        res.status(200).send({favorito: favoritoUpdated}); // Accion correcta
+    });
+
+    console.log(update)
 
 }
 
 function deleteFavorito (req , res) {
     var favoritoId = req.params.id;
-    res.status(200).send({data: favoritoId});
+    var update = req.body;
+
 
 }
 
 module.exports = {
     prueba,
     getFavorito,
+    getFavoritos,
     saveFavorito,
     updateFavorito,
     deleteFavorito,
